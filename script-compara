@@ -1,0 +1,26 @@
+def comparar_arquivos(arquivo1, arquivo2):
+    # Abrir os arquivos
+    with open(arquivo1, 'r') as file1, open(arquivo2, 'r') as file2:
+        # Ler as linhas de cada arquivo
+        linhas_arquivo1 = file1.readlines()
+        linhas_arquivo2 = file2.readlines()
+
+    # Convertendo as linhas em conjuntos de linhas únicas
+    conjunto1 = set(linhas_arquivo1)
+    conjunto2 = set(linhas_arquivo2)
+
+    # Encontrar as linhas diferentes
+    diferentes = conjunto1.symmetric_difference(conjunto2)
+
+    # Converter conjunto de linhas diferentes para lista e ordenar
+    diferentes_ordenadas = sorted(list(diferentes))
+
+    # Imprimir as linhas diferentes
+    print("Linhas diferentes:")
+    for linha in diferentes_ordenadas:
+        print(linha.strip())  # Remover espaços em branco e quebras de linha extras
+
+# Teste do código
+arquivo1 = 'lscompleta.txt'
+arquivo2 = 'lsdeferidos.txt'
+comparar_arquivos(arquivo1, arquivo2)
